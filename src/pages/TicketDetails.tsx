@@ -43,17 +43,17 @@ export default function TicketDetails({ isAdminView = false }: Props) {
         {t('common.back')}
       </button>
 
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex justify-between items-start mb-6">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold mb-2">{ticket.title}</h1>
+            <h1 className="text-xl sm:text-2xl font-bold mb-2">{ticket.title}</h1>
             <p className="text-gray-600 mb-4">
               {t('ticket.submittedBy')}: {ticket.customerName}
             </p>
           </div>
-          <div className="text-right">
-            <div className="mb-2">
-              <span className="font-medium">{t('ticket.status')}:</span>{' '}
+          <div className="text-left sm:text-right space-y-2">
+            <div>
+              <span className="font-medium mr-2">{t('ticket.status')}:</span>
               <span
                 className={`inline-block px-2 py-1 rounded text-sm ${
                   ticket.status === 'pending'
@@ -67,7 +67,7 @@ export default function TicketDetails({ isAdminView = false }: Props) {
               </span>
             </div>
             <div>
-              <span className="font-medium">{t('ticket.priority')}:</span>{' '}
+              <span className="font-medium mr-2">{t('ticket.priority')}:</span>
               <span
                 className={`inline-block px-2 py-1 rounded text-sm ${
                   ticket.priority === 'low'
@@ -85,10 +85,10 @@ export default function TicketDetails({ isAdminView = false }: Props) {
 
         <div className="mb-6">
           <h2 className="text-lg font-medium mb-2">{t('ticket.description')}</h2>
-          <p className="text-gray-700 whitespace-pre-wrap">{ticket.description}</p>
+          <p className="text-gray-700 whitespace-pre-wrap break-words">{ticket.description}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-sm">
           <div>
             <span className="font-medium">{t('ticket.device')}:</span>{' '}
             {t(`submitTicket.device.${ticket.device}`)}
@@ -99,7 +99,7 @@ export default function TicketDetails({ isAdminView = false }: Props) {
           </div>
           <div>
             <span className="font-medium">{t('ticket.email')}:</span>{' '}
-            {ticket.customerEmail}
+            <span className="break-words">{ticket.customerEmail}</span>
           </div>
         </div>
 
